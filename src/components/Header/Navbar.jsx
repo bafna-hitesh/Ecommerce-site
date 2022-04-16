@@ -1,27 +1,11 @@
 import React, {useRef} from 'react'
+import './Navbar.css'
 
 const Navbar = () => {
     const navRef = useRef(null);
-    const navItems = [
-		{ text: 'Home', link: '/', hideInDesktop: false },
-		{ text: 'Shop Now', link: '/shop', hideInDesktop: false },
-		{ text: 'Profile', link: '/profile', hideInDesktop: true },
-		{ text: 'Orders', link: '/profile/orders', hideInDesktop: true },
-		{ text: 'Addresses', link: '/profile/address', hideInDesktop: true },
-		{ text: 'Settings', link: '/profile/settings', hideInDesktop: true },
-	];
     return (
         <div ref={navRef} className='nav-container'>
             <div className='nav-section'>
-                <div
-					className='burger nav-section-items'
-					onClick={() => {
-						navRef.current.classList.toggle('active');
-					}}>
-					<div className='line1'></div>
-					<div className='line2'></div>
-					<div className='line3'></div>
-				</div>
                 <div className="navbar-logo">
                     ecommerce
                 </div>
@@ -50,23 +34,6 @@ const Navbar = () => {
                             <span className="nav-icon-text">Login</span>
                         </a>
                     </li>
-
-                    {navItems.map(({ text, link, hideInDesktop }) => (
-						<li
-							key={text}
-							className={`list-inline-item ${
-								hideInDesktop ? 'hide-in-desktop' : ''
-							}`}>
-							{/* <NavLink
-								end
-								to={link}
-								activeClassName='navlinks-active'
-								className='navlinks-style text-left'>
-								{text}
-							</NavLink> */}
-						</li>
-					))}
-
                     <li className="list-inline-item display-flex vertical-middle">
                         <a className="nav-icon-link link-no-style text-regular-weight" href="/wishlist">
                             <span className="nav-icon badge-container">
