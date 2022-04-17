@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { sliderIteam } from '../../data';
 import './Slider.css';
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSlideIndex((slideIndex) => (slideIndex + 1) % sliderIteam.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleClick = (direction) => {
     direction === 'left'
