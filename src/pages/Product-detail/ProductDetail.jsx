@@ -1,12 +1,9 @@
 import React from 'react'
-import Footer from '../../components/Footer/Footer'
-import Navbar from '../../components/Header/Navbar'
 import './Product-detail.css'
 
 const ProductDetail = () => {
   return (
       <>
-      <Navbar/>
       <div className="product-detail-card">
         <div>
           <img className="product-detail-image" alt="product" src='https://images.unsplash.com/photo-1581338834647-b0fb40704e21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'/>
@@ -60,7 +57,6 @@ const ProductDetail = () => {
                 </div>
            </div>
       </div>
-      <Footer/>
       </>
   )
 }

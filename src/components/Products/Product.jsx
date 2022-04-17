@@ -1,22 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Product = ({item}) => {
+const Product = ({product}) => {
+  const [isShown, setIsShown] = useState(false);
   return (
     <div className='product-card'>
-        <img className='product-card-img' src={item.img} alt="" />
-        <div className="product-card-info">
-            <span className="shopping-cart-icon product-card-icon">
-            <i class="fa-solid fa-cart-shopping"></i>
+      <div className="product-image" onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+        <img className='card-img' src={product.img} alt="" />
+      </div>
+         <div 
+         className={`product-details ${isShown ? 'active' : ''}`}
+         onMouseEnter={() => setIsShown(false)}
+         >
+          <h3 className='product-heading'>
+          Canon EOS 3000D DSLR Camera 1 Camera Body, 18 - 55 mm          </h3>
+          <div className='rating'>
+            <span>
+                <i className='fas fa-star'></i>
             </span>
-            <span className="search-icon product-card-icon">
-                <i className="fa fa-search"></i>
+            <span>
+                <strong>{product.ratings}.0</strong>/5.0
             </span>
-            <span className="heart-icon product-card-icon">
-                <i class="fa-solid fa-heart"></i>
-            </span> 
-        </div>
+          </div>
+          <div className='product-price'>
+            <p className='new-price'>
+            new-price
+                {/* ₹{product.price.toLocaleString()} */}
+                <span className='old-price'>
+                old-price
+                  {/* ₹ {product.price.toLocaleString()} */}
+                </span>
+            </p>
+          <div className='cart'>
+            <button className="btn product-card-btn btn-text-icon-primary">
+                  <span className="btn-icon-primary">
+                    <i className="fas fa-shopping-cart"></i>
+                  </span>
+                  Add to Cart
+            </button>
+          </div>
+          </div>
+      </div>
     </div>
+    
   )
 }
 
 export default Product
+
+/**
+ * 
+ */

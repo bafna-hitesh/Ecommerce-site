@@ -6,8 +6,8 @@ import './Products.css';
 const Products = () => {
   return (
     <div className='products-container'>
-      {products.map((item) => (
-        <Product key={item.id} item={item} />
+      {products.map((product) => (
+        <Product key={product.id} product={product} />
       ))}
     </div>
   );
