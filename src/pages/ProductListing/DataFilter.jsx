@@ -119,6 +119,7 @@ const DataFilter = () => {
               XS
             </label>
           </li>
+        <div className='filter-divider-line'></div>
         </ul>
       </div>
       </div>
