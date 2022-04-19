@@ -173,6 +173,10 @@ a {
         width: 1.5rem;
         margin: 0.313rem 0;
     }
+    .btn-close {
+        background-color: #282c3f;
+        color: #fff;
+    }
     .side-bar {
         position: absolute;
         display: block;

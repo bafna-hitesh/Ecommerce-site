@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 
 const Product = ({product}) => {
-  const [isShown, setIsShown] = useState(false);
   return (
     <div className='product-card'>
-      <div className="product-image" onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
-        <img className='card-img' src={product.img} alt="" />
+      <div className="product-image" >
+        <img className='product-image card-img' src={product.img} alt="" />
       </div>
          <div 
-         className={`product-details ${isShown ? 'active' : ''}`}
-         onMouseEnter={() => setIsShown(false)}
+         className='product-details'
          >
           <h3 className='product-heading'>
-          Canon EOS 3000D DSLR Camera 1 Camera Body, 18 - 55 mm          </h3>
+          Canon EOS 3000D DSLR Camera 1 Camera Body, 18 - 55 mm
+          </h3>
           <div className='rating'>
             <span>
                 <i className='fas fa-star'></i>
