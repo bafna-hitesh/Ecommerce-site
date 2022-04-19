@@ -68,3 +68,72 @@
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
+@media screen and (max-width: 1024px) {
+	.grid-left-filter {
+		margin-left: 0rem;
+	}
+	.title_of_filters {
+		flex-wrap: wrap;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.grid-left-filter {
+        /* display: none; */
+		background-color: #edebef;
+		position: fixed;
+		bottom: 0;
+		z-index: 2;
+		width: 100%;
+		padding: 0rem;
+	}
+
+	 .padding-around-filter {
+		padding: 0.1rem 1rem;
+	}
+	.filter-section {
+		padding: 0;
+		display: none;
+		max-height: calc(100vh - 6rem);
+	}
+	.grid-right-of-filter {
+		width: 100%;
+	}
+
+	.filter-open {
+		height: 100vh;
+		width: 100vw;
+		padding: 1rem;
+		position: fixed;
+		top: 0;
+		background-color: white;
+	}
+	.filter-open .filter-section {
+		display: block;
+	}
+	.position-fixed {
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+		z-index: 4;
+		background-color:antiquewhite;
+	}
+
+}
+
+@media screen and (min-width: 768px) {
+	.position-fixed {
+		position: sticky;
+		top: 4rem;
+		width: 100%;
+	}
+	.pointer-event-none {
+		pointer-events: none;
+	}
+}
+
+@media screen and (max-width: 1024px) and (min-width: 767px) {
+	.grid-left-filter {
+		width: fit-content;
+	}
+}

@@ -68,3 +68,15 @@
   background: #eee;
   color: black;
 }
+
+@media screen and (max-width: 769px) {
+  .category-container {
+    flex-direction: column;
+    padding: 0;
+    justify-content: center;
+  }
+  .card {
+    width: 95%;
+
+  }
+}

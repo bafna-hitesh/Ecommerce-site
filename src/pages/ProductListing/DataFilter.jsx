@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const DataFilter = () => {
+  const [openFilter, setFilter] = useState(false);
+
   return (
     <div className='grid-left-filter'>
       <div className='padding-around-filter'>
-        <div className='title_of_filters'>
-          <button className='link-no-style'>FILTERS</button>
-          <button className='link-no-style clear-btn'>CLEAR ALL</button>
-        </div>
+        <div
+          className={
+            openFilter
+            ? 'padding-around-filter position-fixed filter-open'
+            : 'padding-around-filter position-fixed'
+          }>
+          <div className='title_of_filters'>
+            <button
+                onClick={() => setFilter((openFilter) => !openFilter)}
+                className='link-no-style pointer-event-none'>
+                {openFilter ? 'APPLY' : 'FILTERS'}
+            </button>
+            <button
+                onClick={() => {
+                  setFilter((openFilter) => false);
+                }}
+                className='link-no-style link-text-primary clear-all-link'>
+                CLEAR ALL
+            </button>
+			    </div>
+
         <ul className='filter-section'>
           <div className='filter-divider-line'></div>
           <li className='text-regular-weight filter-section-title'>SORT</li>
@@ -101,6 +120,7 @@ const DataFilter = () => {
             </label>
           </li>
         </ul>
+      </div>
       </div>
     </div>
   );

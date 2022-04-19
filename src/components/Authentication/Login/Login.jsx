@@ -1,10 +1,10 @@
+import '../styles.css'
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import InputPasswordField from '../InputPasswordField';
 
 const Login = () => {
-    const [isHide, setIsHide] = useState('Show');
-    function clickHandler(){
-        setIsHide(isHide === 'Show' ? 'Hide' : 'Show')
-    }
+    console.log('render Login');
   return (
       <>
         <div class="form-container">
@@ -14,21 +14,16 @@ const Login = () => {
                     <input class="form-field" placeholder="Enter your email here" required=""/>
                 </div>
                 <div class="row">
-                    <span class="input-with-show-btn">
-                        <input class="form-field" placeholder="Enter your password here" type={isHide === 'Hide' ? 'text' : 'password'}/>
-                        <button type="button" class="show-btn" onClick={clickHandler} tabindex="-1">
-                            {isHide}
-                        </button>
-                    </span>
+                    <InputPasswordField placeholder="Enter your password here"/>
                 </div>
                 <button class="login-btn" type="submit">
                     LOGIN
                 </button>
                 <div class="body-cp-md padding-bottom-1rem">
                     Not a user yet? 
-                    <a class="link-text link-text-primary" href="/signup">
+                    <Link to='/signup'>
                         Create your account
-                    </a>
+                    </Link>
                 </div>
             </form>
         </div>

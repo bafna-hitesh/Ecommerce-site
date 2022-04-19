@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const CategoryItem = ({item}) => {
   return (
@@ -6,7 +7,9 @@ const CategoryItem = ({item}) => {
         <img className='card-img' src={item.img} alt="" />
         <div className="card-info">
             <div className="card-title">{item.title}</div>
-            <button className='card-btn'>Shop Now</button>
+            <Link to='/products'>
+              <button className='card-btn'>Shop Now</button>
+            </Link>
         </div>
     </div>
   )

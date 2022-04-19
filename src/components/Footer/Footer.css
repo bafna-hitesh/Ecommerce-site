@@ -1,7 +1,5 @@
 /* footer */
 .footer-container {
-    position: fixed;
-    bottom: 0;
     background-color: #eaeaec;
     min-height: 7rem;
     width: 100%;

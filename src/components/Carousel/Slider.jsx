@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { sliderIteam } from '../../data';
 import './Slider.css';
 
@@ -41,7 +42,9 @@ const Slider = () => {
             <div className='info-container'>
               <h1 className='title'>{item.title}</h1>
               <p className='desc'>{item.description}</p>
-              <button className='info-btn'>shop now</button>
+              <Link to='/products'>
+                <button className='info-btn'>shop now</button>
+              </Link>
             </div>
           </div>
         ))}
