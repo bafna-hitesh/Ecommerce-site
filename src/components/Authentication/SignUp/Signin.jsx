@@ -1,13 +1,9 @@
 import '../styles.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import InputPasswordField from '../InputPasswordField';
 
 const Signin = () => {
-  const [isHide, setIsHide] = useState('Show');
-  function clickHandler() {
-    setIsHide(isHide === 'Show' ? 'Hide' : 'Show');
-  }
   return (
     <div class='form-container'>
       <h1 class='login-header'>SIGN UP</h1>
@@ -65,7 +61,9 @@ const Signin = () => {
         </button>
         <div class='login-route'>
           Already registered?
-          <Link to='/login'>Login here</Link>
+          <Link to='/login' className='login-clicked'>
+            Login here
+          </Link>
         </div>
       </form>
     </div>

@@ -132,7 +132,7 @@ a {
   .nav-section-item-width50pc {
     display: flex;
     flex-wrap: wrap;
-    justify-content: end;
+    justify-content: flex-end;
     width: 100%;
   }
   .nav-right-side {
