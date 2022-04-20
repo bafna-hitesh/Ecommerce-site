@@ -28,20 +28,20 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 .card-img {
-  border-radius: 0.3rem ;
+  border-radius: 0.3rem;
 }
 .product-image:hover {
   transform: scale(1.1);
 }
-.product-details{
+.product-details {
   position: absolute;
   width: 100%;
   height: 50%;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #eee;
   padding: 1rem;
   border-radius: 0.3rem;
@@ -52,7 +52,7 @@
 }
 .product-card .product-details:hover {
   transform: translateY(0);
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   transition: 0.3s ease-in-out;
   opacity: 1;
 }
@@ -74,7 +74,7 @@
   color: #ffc107;
 }
 .product-card-btn {
-  margin: 0rem!important;
+  margin: 0rem !important;
   padding: 0.5rem 1rem;
 }
 /* .product-card-icon {

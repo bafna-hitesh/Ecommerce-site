@@ -4,7 +4,6 @@ import DataFilter from './DataFilter';
 import './ProductList.css';
 
 const ProductsList = () => {
-
   return (
     <>
       <div className='productlist-container'>
