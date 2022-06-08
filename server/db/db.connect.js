@@ -14,4 +14,4 @@ const initializeDBConnection = async () => {
    }
 };
 
-module.exports = initializeDBConnection;
+module.exports = { initializeDBConnection };
