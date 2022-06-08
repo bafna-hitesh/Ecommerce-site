@@ -1,8 +1,10 @@
 import React from 'react';
+import WishlistButton from '../Buttons/WishlistButton';
 
 const Product = ({ product }) => {
   return (
     <div className='product-card'>
+      <WishlistButton />
       <div className='product-image'>
         <img className='product-image card-img' src={product.img} alt='' />
       </div>
