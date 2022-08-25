@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import { useData } from '../../context/DataContext';
 import './Navbar.css';
 import SideNavbar from './SideNavbar';
+import logo from './logo.png'
 
 const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+
+  const { state } = useData();
+  const { wishList, cart } = state;
+
+  const {
+     authState: { token }
+  } = useAuth();
+
+  const navigate = useNavigate();
 
   return (
     <div className='nav-container'>
@@ -23,7 +35,13 @@ const Navbar = () => {
         </div>
 
         <div className='navbar-logo'>
-          <Link to='/'>ecommerce</Link>
+          <Link to='/'>
+            <img 
+              src={logo}
+              alt='unidzyn logo'
+              id='navbar-logo'
+            />
+          </Link>
         </div>
 
         <ul className='navbar-links'>
@@ -47,6 +65,7 @@ const Navbar = () => {
           />
         </div>
         <ul className='nav-icons list-style-none nav-section-item-width50pc'>
+
           <li className='list-inline-item hide-login-mobile'>
             <Link to='/login' className='nav-icon-link link-no-style'>
               <span className='nav-icon'>
@@ -55,6 +74,7 @@ const Navbar = () => {
               <span className='nav-icon-text'>Login</span>
             </Link>
           </li>
+
           <li className='list-inline-item display-flex vertical-middle'>
             <Link
               className='nav-icon-link link-no-style text-regular-weight'
@@ -62,20 +82,27 @@ const Navbar = () => {
             >
               <span className='nav-icon badge-container'>
                 <i className='fas fa-heart'></i>
-                <span className='status-badge status-badge-number'>0</span>
+                {token && (
+                  <span className='status-badge status-badge-number'>{wishList.length}</span>
+                )}
+                
               </span>
               <span className='nav-icon-text'>Wishlist</span>
             </Link>
           </li>
+
           <li className='list-inline-item display-flex vertical-middle'>
             <Link to='/cart' className='nav-icon-link link-no-style'>
               <span className='nav-icon  badge-container'>
                 <i className='fas fa-shopping-cart'></i>
-                <span className='status-badge status-badge-number'>12</span>
+              {token && (
+                <span className='status-badge status-badge-number'>{cart.length}</span>
+              )}
               </span>
               <span className='nav-icon-text'>Cart</span>
             </Link>
           </li>
+
         </ul>
       </div>
     </div>

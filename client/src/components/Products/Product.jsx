@@ -1,16 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import AddToCartButton from '../Buttons/AddToCartButton';
 import WishlistButton from '../Buttons/WishlistButton';
+
 
 const Product = ({ product }) => {
   return (
     <div className='product-card'>
-      <WishlistButton />
+      <WishlistButton product={ product }/>
       <div className='product-image'>
-        <img className='product-image card-img' src={product.img} alt='' />
+        <img className='product-image card-img' src={product.image} alt='' />
       </div>
       <div className='product-details'>
         <h3 className='product-heading'>
-          Canon EOS 3000D DSLR Camera 1 Camera Body, 18 - 55 mm
+        <Link to={`/product/${product._id}`} id='product-title'>
+            {product.name}
+        </Link>
         </h3>
         <div className='rating'>
           <span>
@@ -22,20 +27,13 @@ const Product = ({ product }) => {
         </div>
         <div className='product-price'>
           <p className='new-price'>
-            new-price
-            {/* ₹{product.price.toLocaleString()} */}
+            ₹{product.price.toLocaleString()}
             <span className='old-price'>
-              old-price
               {/* ₹ {product.price.toLocaleString()} */}
             </span>
           </p>
           <div className='cart'>
-            <button className='btn product-card-btn btn-text-icon-primary'>
-              <span className='btn-icon-primary'>
-                <i className='fas fa-shopping-cart'></i>
-              </span>
-              Add to Cart
-            </button>
+              <AddToCartButton key={product._id} product={product} />
           </div>
         </div>
       </div>
@@ -45,6 +43,3 @@ const Product = ({ product }) => {
 
 export default Product;
 
-/**
- *
- */

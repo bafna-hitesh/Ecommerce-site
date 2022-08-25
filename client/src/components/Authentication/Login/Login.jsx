@@ -1,33 +1,74 @@
 import '../styles.css';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
 import InputPasswordField from '../InputPasswordField';
+import { useAuth } from '../../../context/AuthContext';
+import { Link, useLocation } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Login = () => {
-  console.log('render Login');
+  const { handleUserLogin, authDispatch } = useAuth();
+   const { state } = useLocation();
+   const [user, setUser] = useState({
+      email: 'test@gmail.com',
+      password: 'test123',
+   });
+   const [serverError, setServerError] = useState('');
+   const notify = (message) => toast.success(message);
+   const navigateToPath = state?.from ? state.from : '/';
+
+   const handleOnChangeInput = (e) => {
+      setUser({ ...user, [e.target.name]: e.target.value });
+   };
+
+   const handleFormSubmit = async (e) => {
+      e.preventDefault();
+      setServerError('');
+      const response = await handleUserLogin(
+         user,
+         authDispatch,
+         navigateToPath,
+         notify,
+      );
+
+      if (response.status === 200) {
+         console.log('Logged in successfully');
+      }
+
+      if (response.status !== 200) {
+         setServerError(response.response.data.error);
+      }
+   };
   return (
     <>
-      <div class='form-container'>
-        <h1 class='login-header'>LOGIN</h1>
-        <form class='login-form'>
-          <div class='row'>
+      <div className='form-container'>
+        <h1 className='login-header'>LOGIN</h1>
+        <div className='login-form'>
+          <div className='row'>
             <input
-              class='form-field'
+              className='form-field'
+              id='input-email'
+              type='text'
               placeholder='Enter your email here'
               required=''
+              name='email'
+              value={user.email}
+              onChange={handleOnChangeInput}
             />
           </div>
-          <div class='row'>
-            <InputPasswordField placeholder='Enter your password here' />
+          <div className='row'>
+            <InputPasswordField name={'password'} value={user.password} handleOnChangeInput={handleOnChangeInput} placeholder='Enter your password here' />
           </div>
-          <button class='login-btn' type='submit'>
+          <button className='login-btn' type='submit' onClick={(e) => handleFormSubmit(e)}>
             LOGIN
           </button>
-          <div class='body-cp-md padding-bottom-1rem'>
+          <small className='server-error'>
+              {serverError && <span>{serverError}</span>}
+          </small>
+          <div className='body-cp-md padding-bottom-1rem'>
             Not a user yet?
             <Link to='/signup'>Create your account</Link>
           </div>
-        </form>
+        </div>
       </div>
     </>
   );
