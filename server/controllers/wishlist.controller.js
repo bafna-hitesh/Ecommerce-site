@@ -7,8 +7,8 @@ const getWishlistItems = async (req, res) => {
       wishlist = await wishlist
          .populate('wishlistItems.product')
          .execPopulate();
-      console.log('wishlist', wishlist.wishlistItems);
-      res.json({ success: true, response: wishlist.wishlistItems });
+
+         res.json({ success: true, response: wishlist.wishlistItems });
    } catch (error) {
       res.json({
          success: false,
@@ -22,6 +22,7 @@ const addWishlistItem = async (req, res) => {
    try {
       let { product } = req;
       let { wishlist } = req;
+
       if (!wishlist.wishlistItems.id(product._id)) {
          wishlist = _.extend(wishlist, {
             wishlistItems: _.concat(wishlist.wishlistItems, {
@@ -54,6 +55,7 @@ const deleteWishlistItem = async (req, res) => {
    try {
       let { product } = req;
       let { wishlist } = req;
+      
       await wishlist.wishlistItems.id(product._id).remove();
       await wishlist.save();
       wishlist = await wishlist
