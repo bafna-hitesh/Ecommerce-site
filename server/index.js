@@ -13,14 +13,18 @@ const productRouter = require('./routes/products.router');
 const wishlistRouter = require('./routes/wishlist.router');
 const cartRouter = require('./routes/cart.router');
 
-const { handleEroor } = require('./middlewares/handleEroor.middleware');
+const handleEroor = require('./middlewares/handleEroor.middleware');
 const { handleRouteNotFound } = require('./middlewares/handleRouteNotFound');
 const { handleAuthVerify } = require('./middlewares/handleAuthVerify.middleware')
 
 const app = express();
-
+const corsOptions ={
+    origin:'https://ecommerce-site-alpha.vercel.app', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 initializeDBConnection();
 // PopulateProducts();
@@ -38,7 +42,7 @@ app.use(handleAuthVerify)
 app.use('/api', cartRouter);
 app.use('/api', wishlistRouter);
 
-// app.use(handleEroor);
+app.use(handleEroor);
 app.use(handleRouteNotFound);
 
 const PORT = process.env.PORT || 5000;
