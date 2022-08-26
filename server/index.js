@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cors = require('./allowCors');
 
 const { initializeDBConnection } = require('./db/db.connect')
 const { PopulateProducts } = require('./models/product.model')
