@@ -18,13 +18,10 @@ const { handleRouteNotFound } = require('./middlewares/handleRouteNotFound');
 const { handleAuthVerify } = require('./middlewares/handleAuthVerify.middleware')
 
 const app = express();
-const corsOptions ={
-    origin:'https://ecommerce-site-alpha.vercel.app', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
+
+app.use(cors());
+
 app.use(bodyParser.json());
-app.use(cors(corsOptions));
 
 initializeDBConnection();
 // PopulateProducts();

@@ -5,7 +5,6 @@ import './WishList.css';
 export const WishList = () => {
    const { state } = useData();
    const { wishList } = state;
-
    return (
       <>
          <section className='wishlist-sec'>
@@ -14,8 +13,8 @@ export const WishList = () => {
                <h3 className='wishlist-info'>Your wishlist is Empty</h3>
             ) : (
                <div className='wrapper-wishlist'>
-                  {wishList?.map(({ product }) => (
-                        <WishListItem key={product._id} product={product} /> 
+                  {wishList?.map((item ) => (
+                        <WishListItem key={item._id} product={item.product} /> 
                   ))}
                </div>
             )}

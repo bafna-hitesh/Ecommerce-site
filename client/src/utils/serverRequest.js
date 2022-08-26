@@ -1,6 +1,24 @@
 import axios from 'axios';
 import { checkItem, API_ENDPOINT } from './utils';
 
+export const handleFetchUserDetails = async (dispatch, token) => {
+   try {
+      const {
+         data: { user },
+      } = await axios({
+         method: 'GET',
+         url: `${API_ENDPOINT}/api/user`,
+         headers: {
+            Authorization: token,
+         },
+      });
+      
+      dispatch({ type: 'SET_USER_DETAILS', payload: { user: user } });
+   } catch (error) {
+      console.log(error);
+   }
+};
+
 export const handleFetchProducts = async (dispatch) => {
    try {
       const {

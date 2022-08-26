@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
 import './Navbar.css';
@@ -16,7 +16,7 @@ const Navbar = () => {
      authState: { token }
   } = useAuth();
 
-  const navigate = useNavigate();
+  const logRoute = token ? "account" : "login";
 
   return (
     <div className='nav-container'>
@@ -67,11 +67,11 @@ const Navbar = () => {
         <ul className='nav-icons list-style-none nav-section-item-width50pc'>
 
           <li className='list-inline-item hide-login-mobile'>
-            <Link to='/login' className='nav-icon-link link-no-style'>
+            <Link to={`/${logRoute}`} className='nav-icon-link link-no-style'>
               <span className='nav-icon'>
                 <i className='fas fa-user'></i>
               </span>
-              <span className='nav-icon-text'>Login</span>
+              <span className='nav-icon-text'>{logRoute}</span>
             </Link>
           </li>
 

@@ -11,7 +11,11 @@ export const AuthReducer = (state, { type, payload }) => {
             ...state,
             token: '',
          };
-
+      case 'SET_USER_DETAILS':
+         return {
+            ...state,
+            user: payload.user,
+         };
       default:
          break;
    }

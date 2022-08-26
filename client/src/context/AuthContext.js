@@ -15,10 +15,11 @@ export const AuthProvider = ({ children }) => {
 
    const initialState = {
       token: tokenDetail,
+      user: null,
    };
 
    const [authState, authDispatch] = useReducer(AuthReducer, initialState);
-
+   
    const handleUserSignup = async (user) => {
       try {
          const response = await axios.post(`${API_ENDPOINT}/api/signup`, user);
@@ -28,9 +29,10 @@ export const AuthProvider = ({ children }) => {
       }
    };
 
-   const handleUserLogin = async (user, authDispatch, from, notify) => {
+   const handleUserLogin = async (user, authDispatch, notify) => {
       try {
          const response = await axios.post(`${API_ENDPOINT}/api/login`, user);
+
          if (response.status === 200) {
             localStorage.setItem(
                'session',
@@ -41,7 +43,7 @@ export const AuthProvider = ({ children }) => {
                type: 'SET_USER_LOGIN',
                payload: response.data.token,
             });
-            navigate(from);
+            navigate('/');
          }
          return response;
       } catch (error) {

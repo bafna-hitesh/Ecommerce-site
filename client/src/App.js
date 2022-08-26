@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import {
    handleFetchCart,
    handleFetchProducts,
+   handleFetchUserDetails,
    handleFetchWishlist,
 } from './utils/serverRequest';
 
@@ -21,11 +22,13 @@ import { PrivateRoute } from './components/Authentication/PrivateRoute';
 import { useAuth } from './context/AuthContext';
 import { Product } from './pages/Product/Product';
 import { WishList } from './pages/WishList/WishList';
+import { Account } from './pages/Account/Account'
 
 function App() {
   const { dispatch } = useData();
    const {
       authState: { token },
+      authDispatch
    } = useAuth();
 
    useEffect(() => {
@@ -36,8 +39,9 @@ function App() {
       if (token) {
          handleFetchCart(dispatch, token);
          handleFetchWishlist(dispatch, token);
+         handleFetchUserDetails(authDispatch,token)
       }
-   }, [dispatch, token]);
+   }, [dispatch, token, authDispatch]);
    
   return (
     <div className='App'>
@@ -51,6 +55,7 @@ function App() {
          <Route element={<PrivateRoute />} >
             <Route path='/cart' element={<Cart />} />
             <Route path='/wishlist' element={<WishList/>} />
+            <Route path='/account' element={<Account/>} />
          </Route>
          
         <Route path='/login' element={<Login />} />

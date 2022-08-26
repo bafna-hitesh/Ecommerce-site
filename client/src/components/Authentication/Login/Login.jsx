@@ -2,19 +2,19 @@ import '../styles.css';
 import React, {useState} from 'react';
 import InputPasswordField from '../InputPasswordField';
 import { useAuth } from '../../../context/AuthContext';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 const Login = () => {
   const { handleUserLogin, authDispatch } = useAuth();
-   const { state } = useLocation();
-   const [user, setUser] = useState({
+
+  const [user, setUser] = useState({
       email: 'test@gmail.com',
-      password: 'test123',
+      password: '12345678',
    });
+
    const [serverError, setServerError] = useState('');
    const notify = (message) => toast.success(message);
-   const navigateToPath = state?.from ? state.from : '/';
 
    const handleOnChangeInput = (e) => {
       setUser({ ...user, [e.target.name]: e.target.value });
@@ -23,10 +23,10 @@ const Login = () => {
    const handleFormSubmit = async (e) => {
       e.preventDefault();
       setServerError('');
+
       const response = await handleUserLogin(
          user,
          authDispatch,
-         navigateToPath,
          notify,
       );
 
@@ -38,6 +38,7 @@ const Login = () => {
          setServerError(response.response.data.error);
       }
    };
+   
   return (
     <>
       <div className='form-container'>
