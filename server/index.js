@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('./allowCors');
+const cors = require('cors');
 
 const { initializeDBConnection } = require('./db/db.connect')
 const { PopulateProducts } = require('./models/product.model')
@@ -19,7 +19,10 @@ const { handleAuthVerify } = require('./middlewares/handleAuthVerify.middleware'
 
 const app = express();
 
-app.use(cors);
+app.use(cors({
+    origin: "*",
+    credentials: true,
+}));
 
 app.use(bodyParser.json());
 
