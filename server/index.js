@@ -20,8 +20,8 @@ const { handleAuthVerify } = require('./middlewares/handleAuthVerify.middleware'
 const app = express();
 
 app.use(cors({
-    origin: "*",
-    credentials: true,
+    "Access-Control-Allow-Origin": "*",
+    "credentials": true,
 }));
 
 app.use(bodyParser.json());
