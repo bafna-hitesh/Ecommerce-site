@@ -3,7 +3,7 @@ const _ = require('lodash');
 const getCartItems = async (req, res) => {
    try {
       let { cart } = req;
-      cart = await cart.populate('cartItems.product').execPopulate();
+      cart = await cart.populate('cartItems.product');
       res.json({ success: true, response: cart.cartItems });
    } catch (error) {
       res.status(400).json({

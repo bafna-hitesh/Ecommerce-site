@@ -5,9 +5,8 @@ const getWishlistItems = async (req, res) => {
 
    try {
       wishlist = await wishlist
-         .populate('wishlistItems.product')
-         .execPopulate();
-
+         .populate('wishlistItems.product');
+// console.log(wishlist.wishlistItems);
          res.json({ success: true, response: wishlist.wishlistItems });
    } catch (error) {
       res.json({
