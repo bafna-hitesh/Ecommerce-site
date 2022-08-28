@@ -4,7 +4,6 @@ const getCartItems = async (req, res) => {
    try {
       let { cart } = req;
       cart = await cart.populate('cartItems.product').execPopulate();
-      console.log(cart.cartItems);
       res.json({ success: true, response: cart.cartItems });
    } catch (error) {
       res.status(400).json({

@@ -13,10 +13,18 @@ const productRouter = require('./routes/products.router');
 const wishlistRouter = require('./routes/wishlist.router');
 const cartRouter = require('./routes/cart.router');
 
+const handleEroor = require('./middlewares/handleEroor.middleware');
+const { handleRouteNotFound } = require('./middlewares/handleRouteNotFound');
+const { handleAuthVerify } = require('./middlewares/handleAuthVerify.middleware')
+
 const app = express();
 
+app.use(cors({
+    "Access-Control-Allow-Origin": "*",
+    "credentials": true,
+}));
+
 app.use(bodyParser.json());
-app.use(cors());
 
 initializeDBConnection();
 // PopulateProducts();
@@ -29,10 +37,15 @@ app.use('/api', productRouter);
 app.use('/api', authRouter);
 
 app.use('/api', usersRouter);
+
+app.use(handleAuthVerify)
 app.use('/api', cartRouter);
 app.use('/api', wishlistRouter);
 
+app.use(handleEroor);
+app.use(handleRouteNotFound);
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`server running on https://localhost:${PORT}`)
+    console.log(`server running on http://localhost:${PORT}`)
 })

@@ -9,7 +9,7 @@ const childSchema = new Schema({
 });
 
 const wishlistSchema = new Schema({
-   _id: {
+   userId: {
       type: Schema.Types.ObjectId,
       ref: 'User',
    },

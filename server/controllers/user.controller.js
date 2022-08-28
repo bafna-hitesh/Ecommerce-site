@@ -4,10 +4,17 @@ const SECRET = process.env.SECRET;
 
 const { User } = require('../models/user.model');
 
-const getUsers = async (req, res) => {
-    try {
-       const users = await User.find({});
-       res.json({ success: true, users: users });
+const getUser = async (req, res) => {
+   try {
+      const { user } = req;
+
+		res.status(200).json({
+			user: {
+				email: user.email,
+				firstname: user.firstName,
+				lastname: user.lastName,
+			},
+		});
     } catch (error) {
        res.json({
           success: false,
@@ -67,5 +74,5 @@ const handleLogin = async (req, res) => {
     }
  };
  
- module.exports = { getUsers, handleSignUp, handleLogin };
+ module.exports = { getUser, handleSignUp, handleLogin };
  

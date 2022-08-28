@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 
 const MONGO_URL = process.env['MONGO_URI'];
 
-const initializeDBConnection = async () => {
+const initializeDBConnection =  () => {
    try {
-      const connectionStatus = await mongoose.connect(MONGO_URL);
+      const connectionStatus = mongoose.connect(MONGO_URL, {
+         useNewUrlParser: true,
+         useUnifiedTopology: true,
+         useCreateIndex: true
+      });
 
       if (connectionStatus) {
          console.log('DB Connection Established');

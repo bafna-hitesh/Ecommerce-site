@@ -1,7 +1,11 @@
 import React from 'react';
 import './Product-detail.css';
+import AddToCartButton from '../Buttons/AddToCartButton';
+import MoveToWishListButton from '../Buttons/MoveToWishListButton';
 
-const ProductDetail = () => {
+const ratingArray = [1, 2, 3, 4, 5];
+
+const ProductDetail = ({ product }) => {
   return (
     <>
       <div className='product-detail-card'>
@@ -9,35 +13,32 @@ const ProductDetail = () => {
           <img
             className='product-detail-image'
             alt='product'
-            src='https://images.unsplash.com/photo-1581338834647-b0fb40704e21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
+            src= {product?.image} 
           />
         </div>
         <div className='card-horizontal vertical-middle'>
           <div className='text-container'>
             <h3 className='card-horizontal-title '>
-              Bianyo Artist's A4 Portfolio Folder Case with Shoulder Strap
+              {product?.name}
             </h3>
-            <p>Bianyo</p>
+            <p>{product?.brand}</p>
             <div className='rating-star-container'>
-              <i
-                className='fas fa-star rating-star-icon'
-                style={{ color: 'rgb(255, 180, 0)' }}
-              ></i>
-              <i
-                className='fas fa-star rating-star-icon'
-                style={{ color: 'rgb(255, 180, 0)' }}
-              ></i>
-              <i
-                className='fas fa-star rating-star-icon'
-                style={{ color: 'rgb(255, 180, 0)' }}
-              ></i>
-              <i className='fas fa-star rating-star-icon'></i>
-              <i className='fas fa-star rating-star-icon'></i>
+            {ratingArray.map((item) => (
+										<i
+											key={item}
+											style={{
+												color:
+													item <= Number(product?.ratings)
+														? '#ffb400'
+														: '',
+											}}
+											className='fas fa-star rating-star-icon'></i>
+									))}{' '}
               <span className='review-box'>(20 reviews)</span>
             </div>
             <p className='card-horizontal-price'>
-              <span className='discounted-price'>Rs.381.99</span>
-              <span className='actual-price'>Rs.749</span>
+              <span className='discounted-price'>Rs. {product?.price}</span>
+              <span className='actual-price'>Rs. {product?.price }</span>
               <span className='primary-text-color'>(49%OFF)</span>
             </p>
             <p className='tax-desc'>inclusive of all taxes</p>
@@ -53,19 +54,19 @@ const ProductDetail = () => {
               </li>
               <li>
                 <i className='far fa-calendar-check feature-icon'></i>
-                <span>Currently in stock</span>
+                <span>{product.inStock === true ? 'In Stock' : 'Out of Stock'}</span>
               </li>
             </ul>
             <div className='CTA-Container'>
               <button className='btn btn-text-icon-primary btn-lg-size'>
-                <span className='btn-icon-primary'>
+                {/* <span className='btn-icon-primary'>
                   <i className='fas fa-shopping-cart'></i>
-                </span>
-                Add to Cart
+                </span> */}
+                <AddToCartButton key={product.id} product={product}/>
               </button>
               <button className='btn btn-text-icon-secondary btn-lg-size'>
                 <i className='btn-icon far fa-heart'></i>
-                Add to Wishlist
+                <MoveToWishListButton key={product.id} product={product}/>
               </button>
             </div>
           </div>

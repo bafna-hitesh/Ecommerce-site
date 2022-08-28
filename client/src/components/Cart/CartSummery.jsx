@@ -1,29 +1,41 @@
 import React from 'react';
+import { useData } from '../../context/DataContext';
+
+const getAmount = (items) => {
+  return items.reduce((acc, item) => {
+     return acc + Number(item.product.price) * item.quantity;
+  }, 0);
+};
 
 const CartSummery = () => {
+  const { state } = useData();
+  const { cart } = state;
+
   return (
-    <div class='cart-summary-container'>
-      <div class='heading'>PRICE DETAILS: (1 items)</div>
-      <div class='row'>
-        <div class='price-label'>Total MRP</div>
-        <div class='price text-right'>₹749.00</div>
+    <>
+      <div className='cart-summary-container'>
+      <div className='heading'>PRICE DETAILS: ({cart.length} items)</div>
+      <div className='row'>
+        <div className='price-label'>Total MRP</div>
+        <div className='price text-right'>₹{getAmount(cart).toFixed(2)}</div>
       </div>
-      <div class='row'>
-        <div class='price-label'>Discount on MRP</div>
-        <div class='price text-right text-green'>₹367.01</div>
+      <div className='row'>
+        <div className='price-label'>Discount on MRP</div>
+        <div className='price text-right text-green'>₹367.01</div>
       </div>
-      <div class='row'>
-        <div class='price-label'>Convenience Fee</div>
-        <span class='text-strike-through'>₹99</span>
-        <span class='text-green'>FREE</span>
-        <div class='price text-right'></div>
+      <div className='row'>
+        <div className='price-label'>Convenience Fee</div>
+        <span className='text-strike-through'>₹99</span>
+        <span className='text-green'>FREE</span>
+        <div className='price text-right'></div>
       </div>
-      <div class='row text-regular-weight body-cp-rg'>
-        <div class='price-label'>Total Amount</div>
-        <div class='price text-right'>₹381.99</div>
+      <div className='row text-regular-weight body-cp-rg'>
+        <div className='price-label'>Total Amount</div>
+        <div className='price text-right'>₹{getAmount(cart).toFixed(2)}</div>
       </div>
-      <button class='btn btn-solid-primary '>Place Order</button>
+      <button className='btn btn-solid-primary '>Place Order</button>
     </div>
+    </>
   );
 };
 

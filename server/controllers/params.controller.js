@@ -5,10 +5,11 @@ const { Product } = require('../models/product.model');
 
 const getWishlistById = async (req, res, next) => {
    try {
-      const wishlist = await Wishlist.findById(req.userId);
+      const userId = req.user._id;
+      const wishlist = await Wishlist.findOne({_id: userId});
       if (!wishlist) {
          const userWishlist = new Wishlist({
-            _id: req.userId,
+            _id: userId,
          });
          await userWishlist.save();
          return res.json({
@@ -26,10 +27,11 @@ const getWishlistById = async (req, res, next) => {
 
 const getCartById = async (req, res, next) => {
    try {
-      const cart = await Cart.findById(req.userId);
+      const userId = req.user._id;
+		let cart = await Cart.findOne({ userId });
       if (!cart) {
          const userCart = new Cart({
-            _id: req.userId,
+            userId,
          });
          await userCart.save();
          return res.json({ response: userCart.cartItems });
@@ -38,22 +40,7 @@ const getCartById = async (req, res, next) => {
       next();
    } catch (error) {
       return res
-         .status(400)
-         .json({ success: false, errorMessage: error.message });
-   }
-};
-
-const getUserById = async (req, res, next, id) => {
-   try {
-      const user = await User.findById(id);
-      if (!user) {
-         throw Error('Unable to find the user');
-      }
-      req.user = user;
-      next();
-   } catch (error) {
-      return res
-         .status(400)
+         .status(500)
          .json({ success: false, errorMessage: error.message });
    }
 };
@@ -73,4 +60,4 @@ const getProductById = async (req, res, next, id) => {
    }
 };
 
-module.exports = { getUserById, getWishlistById, getCartById, getProductById };
+module.exports = {getWishlistById, getCartById, getProductById };
