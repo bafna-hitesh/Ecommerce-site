@@ -3,7 +3,7 @@ import { useData } from '../../context/DataContext';
 
 const getAmount = (items) => {
   return items.reduce((acc, item) => {
-     return acc + Number(item.product.price) * item.quantity;
+     return acc + Number(item?.product?.price) * item.quantity;
   }, 0);
 };
 

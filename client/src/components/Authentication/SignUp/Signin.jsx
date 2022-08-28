@@ -87,7 +87,7 @@ const Signin = () => {
 
    const handleFormSubmit = async (e) => {
       e.preventDefault();
-      console.log('handleform', user);
+
       if (handleFormValidate()) {
          const response = await handleUserSignup(user, notify);
 
@@ -206,10 +206,10 @@ const Signin = () => {
           REGISTER
         </button>
         {serverError && (
-            <div class='alert alert-error'>
-              <p class='alert-heading'>
+            <div className='alert alert-error'>
+              <p className='alert-heading'>
                   <span>
-                    <i class='fas fa-exclamation-circle'></i>
+                    <i className='fas fa-exclamation-circle'></i>
                   </span>
                   {serverError}
               </p>

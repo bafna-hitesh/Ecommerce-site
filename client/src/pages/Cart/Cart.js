@@ -10,15 +10,18 @@ const Cart = () => {
       <>
       <h1 className='cart-header'>My Cart</h1>
       <div className='cart-section'>
-         {state.cart?.map(({product, quantity}) => {
+         <div className='cart-item-section'>
+         {state.cart?.map((item) => {
             return (
             <CartIteam 
-               key={product?._id}
-               product={product}
-               quantity={quantity}
+               key={item?.product?._id}
+               product={item?.product}
+               quantity={item?.quantity}
             />);
          })}
-         <CartSummerty/>
+         </div>
+
+            <CartSummerty/>
       </div>
       </>
    );

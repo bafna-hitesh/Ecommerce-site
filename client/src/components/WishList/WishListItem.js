@@ -6,9 +6,9 @@ import './WishListItem.css';
 export const WishListItem = ({ product }) => {
    return (
       <div className='product-card'>
-      <RemoveWishlistButton key={product._id} product={product} />
+      <RemoveWishlistButton product={product} />
       <div className='product-image'>
-        <img className='product-image card-img' src={product.image} alt='' />
+        <img className='product-image card-img' src={product?.image} alt='' />
       </div>
       <div className='product-details'>
         <h3 className='product-heading'>

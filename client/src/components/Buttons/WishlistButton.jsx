@@ -14,7 +14,6 @@ import { checkItem } from '../../utils/utils';
       authState: { token },
    } = useAuth();
 
-   const { wishList } = state;
    const notify = (message) => toast.success(message);
 
    const handleAddItemError = () => {
@@ -39,7 +38,7 @@ import { checkItem } from '../../utils/utils';
             <span>
             <i
                className={
-                  !checkItem(wishList, product)
+                  !checkItem(state?.wishList, product)
                      ? 'far fa-heart fa-heart-product'
                      : 'fas fa-heart fa-heart-product active'
                }>

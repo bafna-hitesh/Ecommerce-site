@@ -3,9 +3,8 @@
     flex-wrap: wrap;
     max-width: 1200px;
     width: 100%;
-    align-items: center;
-    justify-content: space-evenly;
     margin: 3rem auto;
+    justify-content: space-evenly;
   }
   .cart-header {
     font-size: 1.25rem;
@@ -15,7 +14,7 @@
   
   .cart-item {
     display: flex;
-    width: 50%;
+    width: 100%;
     margin: 0.5rem;
     padding: 1rem;
     border: 1px solid #ccc;
@@ -118,6 +117,7 @@
     padding: 1rem;
     width: 40%;
     border-left: 2px solid #e9e9eb;
+    height: fit-content;
   }
   .cart-summary-container:hover {
     box-shadow: rgb(149 157 165 / 20%) 0px 10px 10px;
