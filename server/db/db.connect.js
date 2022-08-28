@@ -4,11 +4,7 @@ const MONGO_URL = process.env['MONGO_URI'];
 
 const initializeDBConnection =  () => {
    try {
-      const connectionStatus = mongoose.connect(MONGO_URL, {
-         useNewUrlParser: true,
-         useUnifiedTopology: true,
-         useCreateIndex: true
-      });
+      const connectionStatus = mongoose.connect(MONGO_URL);
 
       if (connectionStatus) {
          console.log('DB Connection Established');
