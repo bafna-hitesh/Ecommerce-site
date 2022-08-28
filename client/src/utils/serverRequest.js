@@ -248,7 +248,7 @@ export const handleMoveItemToWishlist = async ({
    notify,
    token
 }) => {
-   if (!checkItem(state.wishList, product)) {
+   if (!checkItem(state.wishList.product, product)) {
       notify(`${product.name} Moving to the Wishlist`);
       try {
          const { status } = await axios({

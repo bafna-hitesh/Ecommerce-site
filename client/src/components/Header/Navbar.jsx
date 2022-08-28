@@ -96,7 +96,7 @@ const Navbar = () => {
               <span className='nav-icon  badge-container'>
                 <i className='fas fa-shopping-cart'></i>
               {token && (
-                <span className='status-badge status-badge-number'>{cart.length}</span>
+                <span className='status-badge status-badge-number'>{cart?.length}</span>
               )}
               </span>
               <span className='nav-icon-text'>Cart</span>

@@ -14,7 +14,7 @@ const CartSummery = () => {
   return (
     <>
       <div className='cart-summary-container'>
-      <div className='heading'>PRICE DETAILS: ({cart.length} items)</div>
+      <div className='heading'>PRICE DETAILS: ({cart?.length} items)</div>
       <div className='row'>
         <div className='price-label'>Total MRP</div>
         <div className='price text-right'>₹{getAmount(cart).toFixed(2)}</div>

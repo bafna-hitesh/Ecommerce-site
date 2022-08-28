@@ -11,12 +11,13 @@ const Cart = () => {
       <h1 className='cart-header'>My Cart</h1>
       <div className='cart-section'>
          <div className='cart-item-section'>
-         {state.cart?.map((item) => {
+         {state.cart?.map(({product, quantity}) => {
+            console.log(product);
             return (
             <CartIteam 
-               key={item?.product?._id}
-               product={item?.product}
-               quantity={item?.quantity}
+               key={product._id}
+               product={product}
+               quantity={quantity}
             />);
          })}
          </div>

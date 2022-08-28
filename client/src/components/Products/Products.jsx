@@ -1,7 +1,7 @@
 import React from 'react';
 // import { products } from '../../data';
 import { useData } from '../../context/DataContext';
-import { getFilteredData, getSortedData, DataFilter } from '../../pages/ProductListing/DataFilter';
+import { getFilteredData, getSortedData } from '../../pages/ProductListing/DataFilter';
 import Product from './Product';
 import './Products.css';
 

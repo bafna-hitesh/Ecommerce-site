@@ -23,7 +23,7 @@ export function getFilteredData(
 export const DataFilter = () => {
   const [openFilter, setFilter] = useState(false);
   const { state, dispatch } = useData();
-  const { sortBy, showInventory, showFastDelivery } = state;
+  const { sortBy } = state;
 
   return (
     <div className='grid-left-filter'>
