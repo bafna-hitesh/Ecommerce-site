@@ -32,8 +32,7 @@ const addWishlistItem = async (req, res) => {
          });
          wishlist = await wishlist.save();
          wishlist = await wishlist
-            .populate('wishlistItems.product')
-            .execPopulate();
+            .populate('wishlistItems.product');
          res.json({ success: true, response: wishlist.wishlistItems });
       } else {
          res.json({
@@ -58,8 +57,7 @@ const deleteWishlistItem = async (req, res) => {
       await wishlist.wishlistItems.id(product._id).remove();
       await wishlist.save();
       wishlist = await wishlist
-         .populate('wishlistItems.product')
-         .execPopulate();
+         .populate('wishlistItems.product');
       res.json({ success: true, response: wishlist.wishlistItems });
    } catch (error) {
       res.json({

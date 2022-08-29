@@ -27,7 +27,7 @@ const addCartItem = async (req, res) => {
             }),
          });
          cart = await cart.save();
-         cart = await cart.populate('cartItems.product').execPopulate();
+         cart = await cart.populate('cartItems.product');
          res.json({ success: true, response: cart.cartItems });
       } else {
          res.json({
@@ -50,7 +50,7 @@ const deleteCartItem = async (req, res) => {
    try {
       await cart.cartItems.id(product._id).remove();
       await cart.save();
-      cart = await cart.populate('cartItems.product').execPopulate();
+      cart = await cart.populate('cartItems.product');
       res.json({ success: true, response: cart.cartItems });
    } catch (error) {
       res.json({
