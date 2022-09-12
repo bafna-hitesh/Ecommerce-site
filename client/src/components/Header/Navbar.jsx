@@ -16,7 +16,7 @@ const Navbar = () => {
      authState: { token, user }
   } = useAuth();
 
-  const logRoute = token ? `Hi, ${user?.firstname}` : "login";
+  const logRoute = user ? `Hi, ${user?.firstname}` : "login";
 
   return (
     <div className='nav-container'>
@@ -79,7 +79,7 @@ const Navbar = () => {
               <span className='nav-icon'>
                 <i className='fas fa-user'></i>
               </span>
-              <span className='nav-icon-text'>{logRoute}</span>
+              <span className='nav-icon-text'>{token ? logRoute : 'Login'}</span>
             </Link>
           </li>
 
