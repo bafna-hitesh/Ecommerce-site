@@ -34,3 +34,8 @@
   font-weight: 300;
   font-size: 0.875rem;
 }
+@media screen and (max-width: 769px) {
+  .footer-copy {
+    margin-bottom: 1rem;
+  }
+}

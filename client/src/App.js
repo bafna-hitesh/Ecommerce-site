@@ -9,7 +9,7 @@ import {
    handleFetchWishlist,
 } from './utils/serverRequest';
 
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import { Toast } from './components/Toast/Toast';
 import ProductsList from './pages/ProductListing/ProductsList';
 import Login from '../src/components/Authentication/Login/Login';

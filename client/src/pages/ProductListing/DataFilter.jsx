@@ -72,7 +72,7 @@ export const DataFilter = () => {
           <div className='title_of_filters'>
             <button
               onClick={() => setFilter((openFilter) => !openFilter)}
-              className='link-no-style pointer-event-none'
+              className='link-no-style pointer-event-none sm-filter-text'
             >
               {openFilter ? 'APPLY' : 'FILTERS'}
             </button>
@@ -81,7 +81,7 @@ export const DataFilter = () => {
                 setFilter((openFilter) => false);
                 dispatch({ type: 'RESET_FILTERS' });
               }}
-              className='link-no-style link-text-primary clear-btn'
+              className='link-no-style link-text-primary clear-btn sm-filter-text'
             >
               CLEAR ALL
             </button>
@@ -91,7 +91,7 @@ export const DataFilter = () => {
             <div className='filter-divider-line'></div>
             <li className='text-regular-weight filter-section-title'>SORT</li>
             <li>
-              <label className='form-label'>
+              <label className='filter-form-label'>
                 <input
                   onClick={() =>
                     dispatch({ type: 'SORT', payload: 'HIGH_TO_LOW' })
@@ -105,7 +105,7 @@ export const DataFilter = () => {
               </label>
             </li>
             <li>
-              <label className='form-label'>
+              <label className='filter-form-label'>
                 <input
                   onClick={() =>
                     dispatch({ type: 'SORT', payload: 'LOW_TO_HIGH' })
@@ -121,10 +121,10 @@ export const DataFilter = () => {
             <div className='filter-divider-line'></div>
             
             <div className='text-regular-weight filter-section-title'>COLOR</div>             
-              <li className='form-label'>
+              <li className='filter-form-label'>
                   {productcolor.map((color) => {
                      return (
-                        <div key={color} >
+                        <label key={color} >
                            <input
                               onChange={() => handleByColor(color)}
                               checked={state.sortByColor.includes(color)}
@@ -133,7 +133,7 @@ export const DataFilter = () => {
                               className='form-checkbox-field'
                            />
                            {color}
-                        </div>
+                        </label>
                      );
                   })}
               </li>
@@ -141,10 +141,10 @@ export const DataFilter = () => {
             <div className='filter-divider-line'></div>
             
             <li className='text-regular-weight filter-section-title'>BRANDS</li>
-            <li className='form-label'>
+            <li className='filter-form-label'>
                   {brandsName.map((name) => {
                      return (
-                        <div key={name} >
+                        <label key={name} >
                            <input
                               onChange={() => handleByBrand(name)}
                               checked={state.sortByBrand.includes(name)}
@@ -153,7 +153,7 @@ export const DataFilter = () => {
                               className='form-checkbox-field'
                            />
                            {name}
-                        </div>
+                        </label>
                      );
                   })}
               </li>

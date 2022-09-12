@@ -34,7 +34,7 @@ export const Account = () => {
                               First Name :
                            </span>
                            <span className='profile-input'>
-                              {user?.firstname}
+                              {user.firstname}
                            </span>
                         </div>
                      </div>
@@ -44,7 +44,7 @@ export const Account = () => {
                               Last Name :
                            </span>
                            <span className='profile-input'>
-                              {user?.lastname}
+                              {user.lastname}
                            </span>
                         </div>
                      </div>

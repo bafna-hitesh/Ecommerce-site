@@ -1,9 +1,9 @@
 /* Navbar */
 .nav-container {
-  position: sticky;
-  top: 0;
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
   width: 100%;
   min-height: 10vh;
   padding: 0.625rem 1rem;
@@ -14,8 +14,9 @@
 }
 #navbar-logo {
   width: 100px;
-  height: 36px;
+  height: 50px;
   margin: 4px;
+  object-fit: cover;
 }
 
 .side-nav-bar {
@@ -27,13 +28,21 @@
   display: flex;
   align-items: center;
 }
+
 .navbar-logo {
   padding: 0 1rem;
+}
+a{
+  color: initial;
 }
 .navbar-links {
   display: flex;
   padding: 0 1rem;
   list-style: none;
+  letter-spacing: .8px;
+}
+.activeClassName {
+  color: #ff3f6c;
 }
 .list-inline-item {
   margin-right: 1.5rem;

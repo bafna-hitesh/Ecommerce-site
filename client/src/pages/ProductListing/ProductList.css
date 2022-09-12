@@ -15,15 +15,16 @@
 }
 .title_of_filters {
   display: flex;
+  position: sticky;
   justify-content: space-between;
   padding: 0 1rem;
+  margin-bottom: .5rem;
 }
 .clear-btn {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid red !important;
 }
 .clear-btn:hover {
-  border-bottom: 1px solid red;
-  color: #696b79;
+  color: #e63961;
 }
 .filter-section {
   padding: 0 1rem;
@@ -47,10 +48,16 @@
 .filter-section-title {
   padding-bottom: 0.625rem;
 }
-.form-label {
+.filter-form-label {
   display: inline-block;
   padding-bottom: 0.625rem;
   cursor: pointer;
+  font-size: .9rem;
+  font-weight: 300;
+  color: #55565a;;
+}
+label{
+  display: flex;
 }
 .filter-section input {
   margin-right: 0.5rem;
@@ -74,6 +81,9 @@
   .title_of_filters {
     flex-wrap: wrap;
   }
+  .sm-filter-text {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -89,8 +99,8 @@
   .position-fixed {
     position: fixed;
     width: 100%;
-    bottom: 0;
-    background-color: antiquewhite;
+    bottom: .8rem;
+    background-color: #eaeaec;
     transform: translateY(93%);
     transition: transform 0.3s ease-in-out;
   }

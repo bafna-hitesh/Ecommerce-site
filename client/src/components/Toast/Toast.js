@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 export const Toast = () => {
    return (
       <Toaster
+      containerStyle={{ top: '64px' }}
          position='top-right'
          // margin-top= '50rem'
          reverseOrder={false}

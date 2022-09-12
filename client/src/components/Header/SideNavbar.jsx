@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const SideNavbar = ({ setShowSidebar }) => {
+  const {
+    authState: { token, user }
+ } = useAuth();
+
+ const logRoute = token ? `Hi, ${user?.firstname}` : "login";
+
   const navItems = [
     { text: 'Home', link: '/', hideInDesktop: false },
     { text: 'Shop Now', link: '/products', hideInDesktop: false },
@@ -14,9 +21,9 @@ const SideNavbar = ({ setShowSidebar }) => {
         <div className='sidebar-header'>
           <div className='sidebar-top'>
             <div className='sidebar-login'>
-              <Link to='/'>
+              <Link to={`/${logRoute}`}>
                 <i className='fas fas-sidebar fas-sidebar-user fa-user'></i>
-                Log In
+                {logRoute}
               </Link>
             </div>
 

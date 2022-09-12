@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
 import './Navbar.css';
 import SideNavbar from './SideNavbar';
-import logo from './logo.png'
+import logo from './unidzyn_logo.png'
 
 const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -13,10 +13,10 @@ const Navbar = () => {
   const { wishList, cart } = state;
 
   const {
-     authState: { token }
+     authState: { token, user }
   } = useAuth();
 
-  const logRoute = token ? "account" : "login";
+  const logRoute = token ? `Hi, ${user?.firstname}` : "login";
 
   return (
     <div className='nav-container'>
@@ -46,10 +46,18 @@ const Navbar = () => {
 
         <ul className='navbar-links'>
           <li className='list-inline-item'>
-            <Link to='/'>Home</Link>
+            <NavLink to='/'  className={({ isActive }) =>
+              isActive ? "activeClassName" : ""
+            }> 
+                Home
+            </NavLink>
           </li>
           <li className='list-inline-item'>
-            <Link to='/products'>Shop Now</Link>
+            <NavLink to='/products'  className={({ isActive }) =>
+              isActive ? "activeClassName" : ""
+            }>
+                Shop Now
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -67,7 +75,7 @@ const Navbar = () => {
         <ul className='nav-icons list-style-none nav-section-item-width50pc'>
 
           <li className='list-inline-item hide-login-mobile'>
-            <Link to={`/${logRoute}`} className='nav-icon-link link-no-style'>
+            <Link to={ token ? 'account' : 'login'} className='nav-icon-link link-no-style'>
               <span className='nav-icon'>
                 <i className='fas fa-user'></i>
               </span>

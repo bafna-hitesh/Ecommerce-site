@@ -5,7 +5,7 @@
   font-family: 'Roboto', sans-serif;
 }
 body {
-  background: hsl(180, 5%, 96%);
+  background: #fff;
   position: relative;
 }
 @media screen and (max-width: 769px) {

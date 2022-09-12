@@ -171,6 +171,10 @@
     cursor: pointer;
   }
   @media screen and (max-width: 769px) {
+    .cart-image {
+      width: 100%;
+      height: auto;
+    }
     .cart-section {
       flex-direction: column;
     }
@@ -184,6 +188,7 @@
     }
     .cart-item-btn {
       width: max-content;
+      border: 1px solid #ccc !important;
     }
     .cart-item-btn:nth-child(1) {
       margin-bottom: 0.5rem;

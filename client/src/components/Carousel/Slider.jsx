@@ -36,14 +36,9 @@ const Slider = () => {
       >
         {sliderIteam.map((item) => (
           <div className='slide' key={item.id}>
-            <div className='img-container'>
+            <Link to='/products' className='img-container'>
               <img src={item.img} alt='' />
-            </div>
-            {/* <div className='info-container'>
-              <Link to='/products'>
-                <button className='info-btn'>shop {item.title}</button>
-              </Link>
-            </div> */}
+            </Link>
           </div>
         ))}
       </div>

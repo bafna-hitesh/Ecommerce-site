@@ -14,7 +14,7 @@ const Footer = () => {
         <li className='list-inline-item'>
           <a
             className='link-no-style footer-links'
-            href='https://github.com/hiteshjain27'
+            href='https://github.com/bafna-hitesh'
           >
             <i className='fab fa-github'></i>
           </a>
@@ -36,7 +36,7 @@ const Footer = () => {
           </a>
         </li>
       </ul>
-      <div className='footer-copy'>© 2021 Hitesh Bafna</div>
+      <div className='footer-copy'>© 2022 Hitesh Bafna</div>
     </div>
   );
 };
