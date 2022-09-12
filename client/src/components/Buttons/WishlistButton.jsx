@@ -43,7 +43,7 @@ import { checkItem } from '../../utils/utils';
                      !checkItem(state?.wishList, product)
                            ? 'far fa-heart fa-heart-product'
                            : 'fas fa-heart fa-heart-product active'
-                        : 'fas fa-heart fa-heart-product '
+                        : 'far fa-heart fa-heart-product '
                }>
 
             </i>
