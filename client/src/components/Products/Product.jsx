@@ -10,9 +10,9 @@ const Product = ({ product }) => {
   return (
     <div className='product-card'>
       <WishlistButton product={ product }/>
-      <div className='product-image'>
+      <Link to={`/product/${product._id}`} className='product-image'>
         <img className='product-image card-img' src={product.image} alt='' />
-      </div>
+      </Link >
       <div className='product-details'>
         <h3 className='product-heading'>
         <Link to={`/product/${product._id}`} id='product-title'>
