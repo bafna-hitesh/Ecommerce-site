@@ -4,11 +4,9 @@ import { Link } from 'react-router-dom';
 const SideNavbar = ({ setShowSidebar }) => {
   const navItems = [
     { text: 'Home', link: '/', hideInDesktop: false },
-    { text: 'Shop Now', link: '/shop', hideInDesktop: false },
-    { text: 'Profile', link: '/profile', hideInDesktop: true },
-    { text: 'Orders', link: '/profile/orders', hideInDesktop: true },
-    { text: 'Addresses', link: '/profile/address', hideInDesktop: true },
-    { text: 'Settings', link: '/profile/settings', hideInDesktop: true },
+    { text: 'Shop Now', link: '/products', hideInDesktop: false },
+    { text: 'Account', link: '/account', hideInDesktop: true },
+
   ];
   return (
     <>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useData } from '../../context/DataContext';
+import { productcolor, brandsName } from './FilterData';
 
 export function getSortedData(productList, sortBy) {
   if (sortBy && sortBy === 'LOW_TO_HIGH') {
@@ -20,10 +21,43 @@ export function getFilteredData(
      .filter(({ inStock }) => (showInventory ? true : inStock));
 }
 
+export function getFilteredColor(productList, productcolor) {
+  if (productcolor.length > 0) {
+        productList = productList.filter((product) =>
+        productcolor.includes(product.color)
+      );
+    }
+  return productList;
+}
+export function getFilteredBrand(productList, productname) {
+  if (productname.length > 0) {
+        productList = productList.filter((product) =>
+        productname.includes(product.brand)
+      );
+    }
+  return productList;
+}
+
 export const DataFilter = () => {
   const [openFilter, setFilter] = useState(false);
   const { state, dispatch } = useData();
   const { sortBy } = state;
+
+  const handleByColor = (color) => {
+    if (state.sortByColor.includes(color)) {
+       dispatch({ type: 'REMOVE_CATEGORY', payload: color });
+    } else {
+       dispatch({ type: 'SET_CATEGORY', payload: color });
+    }
+  };
+
+  const handleByBrand = (name) => {
+    if (state.sortByBrand.includes(name)) {
+       dispatch({ type: 'REMOVE_BRAND', payload: name });
+    } else {
+       dispatch({ type: 'SET_BRAND', payload: name });
+    }
+  };
 
   return (
     <div className='grid-left-filter'>
@@ -45,8 +79,9 @@ export const DataFilter = () => {
             <button
               onClick={() => {
                 setFilter((openFilter) => false);
+                dispatch({ type: 'RESET_FILTERS' });
               }}
-              className='link-no-style link-text-primary clear-all-link'
+              className='link-no-style link-text-primary clear-btn'
             >
               CLEAR ALL
             </button>
@@ -64,7 +99,7 @@ export const DataFilter = () => {
                   className='form-checkbox-field'
                   type='radio'
                   name='sort'
-                  defaultChecked={sortBy && sortBy === 'HIGH_TO_LOW'}
+                  checked={sortBy && sortBy === 'HIGH_TO_LOW'}
                 />
                 Price High to low
               </label>
@@ -78,78 +113,50 @@ export const DataFilter = () => {
                   className='form-checkbox-field'
                   type='radio'
                   name='sort'
-                  defaultChecked={sortBy && sortBy === 'LOW_TO_HIGH'}
+                  checked={sortBy && sortBy === 'LOW_TO_HIGH'}
                 />
                 Price Low to High
               </label>
             </li>
             <div className='filter-divider-line'></div>
-            <li className='text-regular-weight filter-section-title'>COLOR</li>
-            <li>
-              <label onClick={(e) => console.log(e)} className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />
-                White
-              </label>
-            </li>
-            <li>
-              <label className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />
-                Black
-              </label>
-            </li>
-            <li>
-              <label className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />
-                Red
-              </label>
-            </li>
-            <li>
-              <label className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />
-                Blue
-              </label>
-            </li>
-            <li>
-              <label className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />
-                Yellow
-              </label>
-            </li>
-            <li>
-              <label className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />
-                Green
-              </label>
-            </li>
+            
+            <div className='text-regular-weight filter-section-title'>COLOR</div>             
+              <li className='form-label'>
+                  {productcolor.map((color) => {
+                     return (
+                        <div key={color} >
+                           <input
+                              onChange={() => handleByColor(color)}
+                              checked={state.sortByColor.includes(color)}
+                              name='filter-md'
+                              type='checkbox'
+                              className='form-checkbox-field'
+                           />
+                           {color}
+                        </div>
+                     );
+                  })}
+              </li>
+
             <div className='filter-divider-line'></div>
-            <li className='text-regular-weight filter-section-title'>SIZE</li>
-            <li>
-              <label className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />S
-              </label>
-            </li>
-            <li>
-              <label className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />M
-              </label>
-            </li>
-            <li>
-              <label className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />L
-              </label>
-            </li>
-            <li>
-              <label className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />
-                XL
-              </label>
-            </li>
-            <li>
-              <label className='form-label'>
-                <input className='form-checkbox-field' type='checkbox' />
-                XS
-              </label>
-            </li>
+            
+            <li className='text-regular-weight filter-section-title'>BRANDS</li>
+            <li className='form-label'>
+                  {brandsName.map((name) => {
+                     return (
+                        <div key={name} >
+                           <input
+                              onChange={() => handleByBrand(name)}
+                              checked={state.sortByBrand.includes(name)}
+                              name='filter-md'
+                              type='checkbox'
+                              className='form-checkbox-field'
+                           />
+                           {name}
+                        </div>
+                     );
+                  })}
+              </li>
             <div className='filter-divider-line'></div>
           </ul>
         </div>

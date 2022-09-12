@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const CartIteam = ({product, quantity}) => {
    const { dispatch } = useData();
-  //  const { image, name, brand, price, _id } = product;
 
    const handleIncrementQty = (product) => {
       return dispatch({ type: 'INCREASE_QUANTITY', payload: product });
@@ -31,15 +30,15 @@ const CartIteam = ({product, quantity}) => {
             <div className='cart-item-brand'>Brand - {product?.brand}</div>
             <div className='cart-item-quantity'>
               <button
-                 onClick={() => handleDecrementQty(product?.product)}
-                 disabled={product?.quantity <= 1}
+                onClick={() => handleDecrementQty(product)}
+                disabled={quantity <= 1}
                 className='btn btn-square cart-item-quantity-dec'
               >
                 -
               </button>
               <span className='cart-item-qty'>{quantity}</span>
               <button
-                 onClick={() => handleIncrementQty(product?.product)}
+                onClick={() => handleIncrementQty(product)}
                 className='btn cart-item-quantity-inc'
               >
                 +

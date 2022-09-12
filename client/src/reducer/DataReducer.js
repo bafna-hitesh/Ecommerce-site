@@ -61,7 +61,39 @@ export const DataReducer = (state, { type, payload }) => {
 
       case 'TOGGLE_DELIVERY':
          return { ...state, showFastDelivery: !state.showFastDelivery };
+      
+      case 'SET_CATEGORY':
+         return { ...state, sortByColor: [...state.sortByColor, payload] };
 
+      case 'REMOVE_CATEGORY':
+         return {
+            ...state,
+            sortByColor: state.sortByColor.filter(
+               (itemcolor) => itemcolor !== payload,
+            ),
+         };
+         
+      case 'SET_BRAND':
+         return { ...state, sortByBrand: [...state.sortByBrand, payload] };
+
+      case 'REMOVE_BRAND':
+         return {
+            ...state,
+            sortByBrand: state.sortByBrand.filter(
+               (brandname) => brandname !== payload,
+            ),
+         };
+
+      case 'RESET_FILTERS':
+         return {
+            ...state,
+            sortBy: null,
+            showInventory: true,
+            showFastDelivery: false,
+            sortByColor: [],
+            sortByBrand: [],
+         };
+   
       default:
          break;
    }

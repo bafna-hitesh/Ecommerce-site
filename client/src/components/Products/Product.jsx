@@ -5,6 +5,8 @@ import WishlistButton from '../Buttons/WishlistButton';
 
 
 const Product = ({ product }) => {
+  let randomNumber = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+  
   return (
     <div className='product-card'>
       <WishlistButton product={ product }/>
@@ -29,7 +31,7 @@ const Product = ({ product }) => {
           <p className='new-price'>
             ₹{product.price.toLocaleString()}
             <span className='old-price'>
-              {/* ₹ {product.price.toLocaleString()} */}
+              ₹ {product.oldprice.toLocaleString()}
             </span>
           </p>
           <div className='cart'>

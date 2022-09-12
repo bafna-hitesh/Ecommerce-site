@@ -10,6 +10,8 @@ const initialState = {
    sortBy: null,
    showInventory: true,
    showFastDelivery: false,
+   sortByColor: [],
+   sortByBrand: [],
 };
 
 export const DataProvider = ({ children }) => {

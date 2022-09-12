@@ -39,13 +39,11 @@ const Slider = () => {
             <div className='img-container'>
               <img src={item.img} alt='' />
             </div>
-            <div className='info-container'>
-              <h1 className='title'>{item.title}</h1>
-              <p className='desc'>{item.description}</p>
+            {/* <div className='info-container'>
               <Link to='/products'>
-                <button className='info-btn'>shop now</button>
+                <button className='info-btn'>shop {item.title}</button>
               </Link>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>

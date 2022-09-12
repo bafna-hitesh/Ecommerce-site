@@ -4,6 +4,7 @@ export const Toast = () => {
    return (
       <Toaster
          position='top-right'
+         // margin-top= '50rem'
          reverseOrder={false}
          toastOptions={{
             duration: 4000,

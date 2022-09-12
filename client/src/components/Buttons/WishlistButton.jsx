@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
-import { handleAddRemoveWishlistItem } from '../../utils/serverRequest';
+import { handleToggleWishList } from '../../utils/serverRequest';
 import { checkItem } from '../../utils/utils';
 
  const WishListButton = ({ product }) => {
@@ -20,13 +20,14 @@ import { checkItem } from '../../utils/utils';
       toast.error('Please Login to Add Item');
       navigate('/login');
    };
+    
    return (
       <>
          <button
             className='btn btn-secondary btn-wishlist'
             onClick={() =>
                token
-                  ? handleAddRemoveWishlistItem({
+                  ? handleToggleWishList({
                        state,
                        dispatch,
                        product,
@@ -38,9 +39,11 @@ import { checkItem } from '../../utils/utils';
             <span>
             <i
                className={
-                  !checkItem(state?.wishList, product)
-                     ? 'far fa-heart fa-heart-product'
-                     : 'fas fa-heart fa-heart-product active'
+                  token ?
+                     !checkItem(state?.wishList, product)
+                           ? 'far fa-heart fa-heart-product'
+                           : 'fas fa-heart fa-heart-product active'
+                        : 'fas fa-heart fa-heart-product '
                }>
 
             </i>

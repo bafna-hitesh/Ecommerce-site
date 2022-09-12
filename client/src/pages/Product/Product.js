@@ -1,20 +1,13 @@
 import { useParams } from 'react-router';
-import ProductDetail  from '../../components/ProductDetail/ProductDetail';
 import { useData } from '../../context/DataContext';
-import { getSortedData, getFilteredData } from '../ProductListing/DataFilter';
+import ProductDetail  from '../../components/ProductDetail/ProductDetail';
 
 export const Product = () => {
    const { state } = useData();
-   const { products, sortBy, showInventory, showFastDelivery } = state;
+   const { products } = state;
    const { id } = useParams();
-   const sortedData = getSortedData(products, sortBy);
-   const filteredData = getFilteredData(sortedData, {
-      showInventory,
-      showFastDelivery,
-   });
-
-   const product = filteredData.find((item) => item._id === id);
-   // console.log("filteredData", id);
-
+  
+   const product = products.find((item) => item._id === id);
+  
    return <>{product ? <ProductDetail product={product} /> : <div></div>}</>;
 };

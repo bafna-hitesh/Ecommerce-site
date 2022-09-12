@@ -11,8 +11,7 @@ const Cart = () => {
       <h1 className='cart-header'>My Cart</h1>
       <div className='cart-section'>
          <div className='cart-item-section'>
-         {state.cart?.map(({product, quantity}) => {
-            console.log(product);
+         {state.cart.map(({product, quantity}) => {
             return (
             <CartIteam 
                key={product._id}
