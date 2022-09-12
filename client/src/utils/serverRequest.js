@@ -125,7 +125,7 @@ export const handleToggleWishList = async ({
       try {
          await axios({
             method: 'DELETE',
-            url: `${API_ENDPOINT}/api/wishlist/${product.id}`,
+            url: `${API_ENDPOINT}/api/wishlist/${product._id}`,
             headers: {
                Authorization: token,
             },
