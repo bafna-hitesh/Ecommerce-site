@@ -5,6 +5,7 @@ import { useData } from '../../context/DataContext';
 import './Navbar.css';
 import SideNavbar from './SideNavbar';
 import logo from './unidzyn_logo.png'
+import toast from 'react-hot-toast'
 
 const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -17,6 +18,10 @@ const Navbar = () => {
   } = useAuth();
 
   const logRoute = user ? `Hi, ${user?.firstname}` : "login";
+
+  const notifyChange = () => {
+    return token ? '': toast.error('PLease Login To Continue')
+  }
 
   return (
     <div className='nav-container'>
@@ -40,6 +45,7 @@ const Navbar = () => {
               src={logo}
               alt='unidzyn logo'
               id='navbar-logo'
+              loading="lazy"
             />
           </Link>
         </div>
@@ -87,6 +93,7 @@ const Navbar = () => {
             <Link
               className='nav-icon-link link-no-style text-regular-weight'
               to='/wishlist'
+              onClick={notifyChange}
             >
               <span className='nav-icon badge-container'>
                 <i className='fas fa-heart'></i>
@@ -100,7 +107,7 @@ const Navbar = () => {
           </li>
 
           <li className='list-inline-item display-flex vertical-middle'>
-            <Link to='/cart' className='nav-icon-link link-no-style'>
+            <Link to='/cart' className='nav-icon-link link-no-style' onClick={notifyChange}>
               <span className='nav-icon  badge-container'>
                 <i className='fas fa-shopping-cart'></i>
               {token && (
