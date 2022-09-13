@@ -6,6 +6,7 @@ import MoveToWishListButton from '../Buttons/MoveToWishListButton';
 const ratingArray = [1, 2, 3, 4, 5];
 
 const ProductDetail = ({ product }) => {
+ let discountPercerntage = Math.floor(100 * (product?.oldprice - product?.price) / product?.oldprice)
   return (
     <>
       <div className='product-detail-card'>
@@ -38,8 +39,8 @@ const ProductDetail = ({ product }) => {
             </div>
             <p className='card-horizontal-price'>
               <span className='discounted-price'>Rs. {product?.price}</span>
-              <span className='actual-price'>Rs. {product?.price }</span>
-              <span className='primary-text-color'>(49%OFF)</span>
+              <span className='actual-price'>Rs. {product?.oldprice }</span>
+              <span className='primary-text-color'>(${discountPercerntage}%OFF)</span>
             </p>
             <p className='tax-desc'>inclusive of all taxes</p>
             <div className='filter-divider-line'></div>

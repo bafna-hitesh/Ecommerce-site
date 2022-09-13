@@ -10,7 +10,9 @@ export const WishListItem = ({ product }) => {
       <div className='product-card'>
       <RemoveWishlistButton product={product} />
       <div className='product-image'>
-        <img className='product-image card-img' src={image} alt='' />
+        <Link to={`/product/${product?._id}`} id='product-title'>
+          <img className='product-image card-img' src={image} alt='' />
+        </Link>
       </div>
       <div className='product-details'>
         <h3 className='product-heading'>

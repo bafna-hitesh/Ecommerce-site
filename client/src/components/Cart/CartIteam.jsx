@@ -17,11 +17,13 @@ const CartIteam = ({product, quantity}) => {
     <>
         <div className='cart-item'>
           <figure className='cart-item-figure'>
+          <Link to={`/product/${product?._id}`} className='cart-item-title' >
             <img
               className='cart-image'
               alt=''
               src= {product?.image}
             />
+          </Link>
           </figure>
           <div className='cart-item-details'>
             <Link to={`/product/${product?._id}`} className='cart-item-title' >
