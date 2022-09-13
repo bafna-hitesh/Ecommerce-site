@@ -67,7 +67,11 @@ const Login = () => {
           </small>
           <div className='body-cp-md padding-bottom-1rem'>
             Not a user yet?
-            <Link to='/signup'>Create your account</Link>
+            <Link to='/signup'> 
+              <span className='login-signup-text'>
+              Create your account
+              </span>
+            </Link>
           </div>
         </div>
       </div>
@@ -77,6 +81,3 @@ const Login = () => {
 
 export default Login;
 
-/* 
-
-*/

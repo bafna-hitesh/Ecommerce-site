@@ -23,14 +23,12 @@ const Signin = () => {
       lastName: '',
       email: '',
       password: '',
-      // confirmPassword: '',
    });
    const [error, setError] = useState({
       firstName: '',
       lastName: '',
       email: '',
       password: '',
-      // confirmPassword: '',
    });
 
    const [serverError, setServerError] = useState('');
@@ -75,13 +73,6 @@ const Signin = () => {
          }));
          successVailidation = false;
       }
-      // if (user.password !== user.confirmPassword) {
-      //     setError((error) => ({
-      //         ...error,
-      //         confirmPassword: 'Passwords do not match',
-      //     }));
-      //     successVailidation = false;
-      // }
       return successVailidation;
    };
 
@@ -185,19 +176,6 @@ const Signin = () => {
             </div>
           </div>
         </div>
-        {/* <div className='row'>
-          <div className='label-div'>
-            <label className='form-label'>Confirm Password</label>
-          </div>
-          <div className='input-div'>
-            <InputPasswordField name={'confirmPassword'} value={user.confirmPassword} handleOnChangeInput={handleOnChangeInput} placeholder='Re-type your password' />
-            <div className='form-validation-msg form-field-error'>
-            {error.confirmPassword && (
-              <small className='error-text'>*{error.confirmPassword}</small>
-            )}
-            </div>
-          </div>
-        </div> */}
         <button 
             className='login-btn'
             onClick={(e) => handleFormSubmit(e)} 
@@ -218,7 +196,9 @@ const Signin = () => {
         <div className='login-route'>
           Already registered?
           <Link to='/login' className='login-clicked'>
-            Login here
+            <span className='login-signup-text'>
+              Login here
+            </span> 
           </Link>
         </div>
       </form>
